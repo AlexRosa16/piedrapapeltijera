@@ -7,6 +7,7 @@ Opciones = [Piedra, Papel, Tijera]
 OpcionesGanadoras = [[Papel, Piedra], [Tijera, Papel], [Piedra, Tijera]]
 OpcionesPerdedoras = [[Piedra, Papel], [Papel, Tijera], [Tijera, Piedra]]
 MovimientoUsuario = ""
+NombreJugador = input("Dime tu nombre JUGADOR")
 
 
 def GeneradorOpcionRandom():
@@ -42,11 +43,13 @@ while 1:
                     MovimientoUsuario = Tijera
                 print(f"Elección del usuario: {MovimientoUsuario}")
                 if VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 1:
-                    print("Gana el usuario !!!")
+                    print("Has ganado, " + NombreJugador + " !!")
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == -1:
                     print("Gana el ordenador !!!")
+                    print("Has perdido, " + NombreJugador + " :(")
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 0:
                     print("Empate !!!")
+                    print("Has empatado, " + NombreJugador)
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 2:
                     print("Ganan ambos !!!")
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 3:
