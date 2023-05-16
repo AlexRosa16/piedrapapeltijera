@@ -25,6 +25,9 @@ def VerificarJugada(MovimientoUsuariio, MovimientoCompu):
 print("JUEGO : Piedra, papel y tijera")
 while 1:
     SeguirJugando = input("Quieres jugar? (s/n): ")
+    if 'terminar' in SeguirJugando.lower():
+        print("Tienes miedo?")
+        SeguirJugando = input("Quieres jugar esta vez no te cagues? (s/n): ")
     if 's' in SeguirJugando.lower():
         MovimientoGeneradoRandom = GeneradorOpcionRandom()
         while True:
@@ -32,7 +35,7 @@ while 1:
                 "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras): ").lower()
             print(f"Elección del ordenador: {MovimientoGeneradoRandom}")
             if 'p' in SeleccionarMovimiento or 'a' in SeleccionarMovimiento \
-                    or 't' in SeleccionarMovimiento or 'p' in SeleccionarMovimiento or\
+                    or 't' in SeleccionarMovimiento or 'p' in SeleccionarMovimiento or \
                     'a' in SeleccionarMovimiento or 't' in SeleccionarMovimiento:
                 if 'p' in SeleccionarMovimiento:
                     MovimientoUsuario = Piedra
