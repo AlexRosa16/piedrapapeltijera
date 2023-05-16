@@ -9,6 +9,10 @@ OpcionesGanadoras = [[Papel, Piedra], [Tijera, Papel], [Piedra, Tijera], [Lagart
                      [Tijera, Lagarto]]
 OpcionesPerdedoras = [[Piedra, Papel], [Papel, Tijera], [Tijera, Piedra]]
 MovimientoUsuario = ""
+NombreJugador = input("Dime tu nombre JUGADOR")
+Intentos = int(input("Cuantos intentos quieres jugar?"))
+PartidasGanadasUsuario = 0
+PartidasGanadasOrdenador = 0
 
 
 def GeneradorOpcionRandom():
@@ -25,7 +29,8 @@ def VerificarJugada(MovimientoUsuariio, MovimientoCompu):
 
 
 print("JUEGO : Piedra, papel, tijera y lagarto")
-while 1:
+while Intentos > 0:
+    Intentos = Intentos - 1
     SeguirJugando = input("Quieres jugar? (s/n): ")
     if 'terminar' in SeguirJugando.lower():
         print("Tienes miedo?")
@@ -50,13 +55,19 @@ while 1:
                     MovimientoUsuario = Lagarto
                 print(f"Elección del usuario: {MovimientoUsuario}")
                 if VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 1:
-                    print("Gana el usuario !!!")
+                    print("Has ganado, " + NombreJugador + " !!")
+                    PartidasGanadasUsuario += 1
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == -1:
                     print("Gana el ordenador !!!")
+                    print("Has perdido, " + NombreJugador + " :(")
+                    PartidasGanadasOrdenador += 1
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 0:
                     print("Empate !!!")
+                    print("Has empatado, " + NombreJugador)
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 2:
                     print("Ganan ambos !!!")
+                    PartidasGanadasUsuario += 1
+                    PartidasGanadasOrdenador += 1
                 elif VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 3:
                     print("Pierden ambos !!!")
                 break
@@ -67,3 +78,12 @@ while 1:
     else:
         print('Entrada incorrecta. Vuelve a intentar.')
     print()
+
+if PartidasGanadasUsuario > PartidasGanadasOrdenador:
+    print(
+        "El resultado ha sido: Usuario: " + str(PartidasGanadasUsuario) + "Ordenador: " + str(PartidasGanadasOrdenador))
+    print("Has ganado " + NombreJugador + " !!!")
+else:
+    print(
+        "El resultado ha sido: Usuario: " + str(PartidasGanadasUsuario) + "Ordenador: " + str(PartidasGanadasOrdenador))
+    print("Has ganado Ordenador !!!")
