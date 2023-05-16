@@ -3,8 +3,10 @@ import random
 Piedra = 'piedra'
 Papel = 'papel'
 Tijera = 'tijera'
-Opciones = [Piedra, Papel, Tijera]
-OpcionesGanadoras = [[Papel, Piedra], [Tijera, Papel], [Piedra, Tijera]]
+Lagarto = 'lagarto'
+Opciones = [Piedra, Papel, Tijera, Lagarto]
+OpcionesGanadoras = [[Papel, Piedra], [Tijera, Papel], [Piedra, Tijera], [Lagarto, Papel], [Piedra, Lagarto],
+                     [Tijera, Lagarto]]
 OpcionesPerdedoras = [[Piedra, Papel], [Papel, Tijera], [Tijera, Piedra]]
 MovimientoUsuario = ""
 
@@ -22,7 +24,7 @@ def VerificarJugada(MovimientoUsuariio, MovimientoCompu):
     return 0
 
 
-print("JUEGO : Piedra, papel y tijera")
+print("JUEGO : Piedra, papel, tijera y lagarto")
 while 1:
     SeguirJugando = input("Quieres jugar? (s/n): ")
     if 'terminar' in SeguirJugando.lower():
@@ -32,17 +34,20 @@ while 1:
         MovimientoGeneradoRandom = GeneradorOpcionRandom()
         while True:
             SeleccionarMovimiento = input(
-                "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras): ").lower()
+                "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras / \
+                'l' para lagarto): ").lower()
             print(f"Elección del ordenador: {MovimientoGeneradoRandom}")
             if 'p' in SeleccionarMovimiento or 'a' in SeleccionarMovimiento \
                     or 't' in SeleccionarMovimiento or 'p' in SeleccionarMovimiento or \
-                    'a' in SeleccionarMovimiento or 't' in SeleccionarMovimiento:
+                    'a' in SeleccionarMovimiento or 't' in SeleccionarMovimiento or 'l' in SeleccionarMovimiento:
                 if 'p' in SeleccionarMovimiento:
                     MovimientoUsuario = Piedra
                 elif 'a' in SeleccionarMovimiento:
                     MovimientoUsuario = Papel
                 elif 't' in SeleccionarMovimiento:
                     MovimientoUsuario = Tijera
+                elif 'l' in SeleccionarMovimiento:
+                    MovimientoUsuario = Lagarto
                 print(f"Elección del usuario: {MovimientoUsuario}")
                 if VerificarJugada(MovimientoUsuario, MovimientoGeneradoRandom) == 1:
                     print("Gana el usuario !!!")
